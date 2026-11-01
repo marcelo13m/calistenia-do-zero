@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101827">
+  <meta name="description" content="Programa iniciante de calistenia, mobilidade e acompanhamento de treino.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+  <title>Calistenia: do zero</title>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#inicio" aria-label="Calistenia do zero, início">
+        <span class="brand-mark">C<span>+</span></span>
+        <span><strong>CALISTENIA</strong><small>DO ZERO · 8 SEMANAS</small></span>
+      </a>
+      <button id="installBtn" class="install-btn" hidden>＋ Instalar</button>
+    </header>
+
+    <main>
+      <section id="inicio" class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow">SEU PROGRAMA DE INICIAÇÃO</span>
+          <h1>Construa sua<br><em>base.</em></h1>
+          <p>Treine com técnica, evolua no seu ritmo e acompanhe cada sessão.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" data-go="treino">Ver treino de hoje <span>→</span></button>
+            <button class="btn btn-ghost" data-go="plano">Ver programa</button>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orb orb-one"></div><div class="orb orb-two"></div>
+          <div class="hero-number">08<span>SEM</span></div>
+          <div class="hero-line"></div>
+          <div class="hero-tag">CONSISTÊNCIA<br>ANTES DA INTENSIDADE</div>
+        </div>
+      </section>
+
+      <section class="stats-grid" aria-label="Resumo do programa">
+        <article class="stat-card"><span class="stat-icon">◷</span><strong>20–30</strong><small>MIN / SESSÃO</small></article>
+        <article class="stat-card"><span class="stat-icon">▦</span><strong>6 + 1</strong><small>DIAS / SEMANA</small></article>
+        <article class="stat-card"><span class="stat-icon">⌁</span><strong>0</strong><small>EQUIPAMENTOS</small></article>
+        <article class="stat-card"><span class="stat-icon">↗</span><strong id="streakValue">0</strong><small>SESSÕES FEITAS</small></article>
+      </section>
+
+      <section id="treino" class="section">
+        <div class="section-heading">
+          <div><span class="eyebrow">PLANO DE HOJE</span><h2 id="todayTitle">Seu treino</h2></div>
+          <span class="pill pill-green">INICIANTE</span>
+        </div>
+        <div id="todayCard" class="today-card"></div>
+      </section>
+
+      <section id="semana" class="section">
+        <div class="section-heading"><div><span class="eyebrow">ORGANIZAÇÃO</span><h2>Sua semana</h2></div><span class="muted">6 dias de atividade</span></div>
+        <div id="weekGrid" class="week-grid"></div>
+      </section>
+
+      <section id="plano" class="section">
+        <div class="section-heading"><div><span class="eyebrow">EVOLUÇÃO GRADUAL</span><h2>Programa de 8 semanas</h2></div></div>
+        <div id="progression" class="progression-list"></div>
+      </section>
+
+      <section id="biblioteca" class="section">
+        <div class="section-heading"><div><span class="eyebrow">CONSULTE E APRENDA</span><h2>Biblioteca de movimentos</h2></div></div>
+        <div class="filter-row" id="filters"></div>
+        <div id="exerciseLibrary" class="exercise-grid"></div>
+      </section>
+
+      <section id="evolucao" class="section">
+        <div class="section-heading"><div><span class="eyebrow">ACOMPANHAMENTO</span><h2>Sua evolução</h2></div></div>
+        <div class="dashboard-grid">
+          <article class="panel">
+            <h3>Consistência</h3>
+            <div class="big-progress"><strong id="completedCount">0</strong><span> sessões concluídas</span></div>
+            <div class="progress-track"><span id="completionBar"></span></div>
+            <p class="hint">Registros ficam salvos neste aparelho. A meta é consistência, não perfeição.</p>
+          </article>
+          <article class="panel">
+            <h3>Diário de treino</h3>
+            <label for="diaryDate">Data</label><input id="diaryDate" type="date">
+            <label for="diaryMood">Como foi a sessão?</label>
+            <select id="diaryMood"><option>Tranquila</option><option>Desafiadora, mas controlada</option><option>Precisei adaptar</option><option>Fiz apenas mobilidade</option></select>
+            <label for="diaryNote">Anotações</label><textarea id="diaryNote" rows="3" placeholder="Ex.: movimento que ficou mais fácil, dúvida ou desconforto..."></textarea>
+            <button id="saveDiary" class="btn btn-primary btn-full">Salvar registro</button>
+            <div id="diaryHistory" class="diary-history"></div>
+          </article>
+        </div>
+        <article class="panel weekly-review">
+          <h3>Revisão da semana</h3>
+          <label for="weekReview">O que aprendi? O que preciso ajustar?</label>
+          <textarea id="weekReview" rows="3" placeholder="Registre sua percepção sobre técnica, energia e recuperação."></textarea>
+          <button id="saveReview" class="btn btn-secondary">Salvar revisão</button>
+          <span id="reviewSaved" class="hint" aria-live="polite"></span>
+        </article>
+      </section>
+
+      <section id="seguranca" class="section safety-section">
+        <div class="section-heading"><div><span class="eyebrow">ANTES DE TREINAR</span><h2>Treine com segurança</h2></div></div>
+        <div class="safety-grid">
+          <div class="safety-item"><b>01</b><div><strong>Sem dor forçada</strong><p>Esforço muscular leve é diferente de dor aguda ou articular. Pare se houver dor, tontura ou mal-estar.</p></div></div>
+          <div class="safety-item"><b>02</b><div><strong>Controle primeiro</strong><p>Faça movimentos lentos, com amplitude confortável. Não force alongamentos nem prenda a respiração.</p></div></div>
+          <div class="safety-item"><b>03</b><div><strong>Recuperação conta</strong><p>Se estiver muito cansado, reduza o treino ou descanse. Sono, alimentação suficiente e pausas fazem parte do progresso.</p></div></div>
+          <div class="safety-item"><b>04</b><div><strong>Não improvise equipamentos</strong><p>Não use portas, mesas, cadeiras instáveis ou móveis como pontos de ancoragem para puxadas. Sem barra segura, o treino de costas fica limitado.</p></div></div>
+        </div>
+        <p class="disclaimer">Este é um programa educativo geral, não uma avaliação individual. Se tiver lesão, condição de saúde ou dor persistente, converse com um profissional de saúde ou educação física e um responsável.</p>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Navegação principal">
+      <button data-go="inicio" class="nav-item active"><span>⌂</span>Início</button>
+      <button data-go="treino" class="nav-item"><span>▣</span>Treino</button>
+      <button data-go="biblioteca" class="nav-item"><span>▤</span>Exercícios</button>
+      <button data-go="evolucao" class="nav-item"><span>↗</span>Evolução</button>
+    </nav>
+  </div>
+
+  <dialog id="exerciseDialog" class="exercise-dialog">
+    <button class="dialog-close" id="closeDialog" aria-label="Fechar">×</button>
+    <div id="dialogContent"></div>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
